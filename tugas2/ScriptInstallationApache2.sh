@@ -39,7 +39,7 @@ _EOF_
         rm -rf /opt/web/
 
     else
-	rs ync -a 000-default.conf /etc/apache2/sites-enabled/
+	rsync -a 000-default.conf /etc/apache2/sites-enabled/
 	echo "Cloning dari Github"
 	mkdir /opt/web
 	git clone https://github.com/jlord/hello.git /opt/web
