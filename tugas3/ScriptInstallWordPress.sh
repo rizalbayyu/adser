@@ -85,3 +85,4 @@ chmod -R 755 /var/www/html/
 
 
 systemctl restart apache2
+fi
