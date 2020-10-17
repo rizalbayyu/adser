@@ -77,7 +77,7 @@ tar -xvzf latest.tar.gz
 # Copy wordpress
 rsync -a wordpress/* /var/www/html/
 #move config from tmp config
-mv /tmp/config/wp-config.php /var/www/html/
+mv wp-config.php /var/www/html/
 # Give permission user to apache
 chown -R apache:apache /var/www/html/
 #change access permissions
