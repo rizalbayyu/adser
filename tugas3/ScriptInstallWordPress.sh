@@ -79,7 +79,7 @@ rsync -a wordpress/* /var/www/html/
 #move config from tmp config
 mv wp-config.php /var/www/html/
 # Give permission user to apache
-chown -R apache:apache /var/www/html/
+chown -R www-data:www-data /var/www/html/
 #change access permissions
 chmod -R 755 /var/www/html/
 
