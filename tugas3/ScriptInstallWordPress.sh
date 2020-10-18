@@ -74,8 +74,8 @@ mkdir /var/www/html/wordpress
 wget http://wordpress.org/latest.tar.gz -P /opt/
 # extract Archieve to /opt/wordpress directory
 tar -xvzf /opt/latest.tar.gz
-# Copy wordpress
-rsync -a wordpress/* /var/www/html/wordpress
+# Move wordpress
+mv wordpress/* /var/www/html/wordpress
 # move wp-config
 rsync -a wp-config.php /var/www/html/wordpress
 # copy 000-default.conf
