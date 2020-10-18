@@ -70,22 +70,24 @@ echo "==========================================================================
 echo "===========================Install Wordpress=============================="
 echo "=========================================================================="
 # Preparing Installation WordPress
-mkdir /opt/wordpress
 mkdir /var/www/html/wordpress
 cd /opt/wordpress/ && wget http://wordpress.org/latest.tar.gz
 # extract Archieve to /opt/wordpress directory
-tar -xvzf latest.tar.gz
+tar -xvzf /opt/latest.tar.gz
 # Copy wordpress
 rsync -a wordpress/* /var/www/html/wordpress
 # move wp-config
-mv wp-config.php /var/www/html/wordpress
+rsync -a wp-config.php /var/www/html/wordpress
 # copy 000-default.conf
 rsync -a 000-default.conf /etc/apache2/sites-enabled/
 # Give permission user to www-data
-chown -R www-data:www-data /var/www/html/wordpress
+chown -R www-data:www-data /var/www/html
 #change access permissions
-chmod -R 755 /var/www/html/wordpress
+chmod -R 755 /var/www/html
 
+a2enmod rewrite
 
 systemctl restart apache2
+systemctl restart mysql
+rm -rf wordpress/
 fi
