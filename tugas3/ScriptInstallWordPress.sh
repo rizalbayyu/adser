@@ -29,7 +29,7 @@ echo "==========================================================================
 echo "===========================MySQL Secure Installation=============================="
 echo "=========================================================================="
 
-# Install Secure MariaDB
+# Install Secure Mysql
 # Menggunakan spawn, send, expect agar program berjalan secara otomatis
 # Spawn=Memanggil atau memulai Script atau Program
 # expect=Menunggu output dari program
@@ -71,17 +71,18 @@ echo "===========================Install Wordpress==============================
 echo "=========================================================================="
 # Preparing Installation WordPress
 mkdir /opt/wordpress
+mkdir /var/www/html/wordpress
 cd /opt/wordpress/ && wget http://wordpress.org/latest.tar.gz
-# extract Archieve to web directory
+# extract Archieve to /opt/wordpress directory
 tar -xvzf latest.tar.gz
 # Copy wordpress
-rsync -a wordpress/* /var/www/html/
-#move config from tmp config
-mv wp-config.php /var/www/html/
-# Give permission user to apache
-chown -R www-data:www-data /var/www/html/
+rsync -a wordpress/* /var/www/html/wordpress
+#move wp-config
+mv wp-config.php /var/www/html/wordpress
+# Give permission user to www-data
+chown -R www-data:www-data /var/www/html/wordpress
 #change access permissions
-chmod -R 755 /var/www/html/
+chmod -R 755 /var/www/html/wordpress
 
 
 systemctl restart apache2
