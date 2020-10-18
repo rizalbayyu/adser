@@ -71,7 +71,7 @@ echo "===========================Install Wordpress==============================
 echo "=========================================================================="
 # Preparing Installation WordPress
 mkdir /var/www/html/wordpress
-cd /opt/wordpress/ && wget http://wordpress.org/latest.tar.gz
+wget http://wordpress.org/latest.tar.gz -P /opt/
 # extract Archieve to /opt/wordpress directory
 tar -xvzf /opt/latest.tar.gz
 # Copy wordpress
