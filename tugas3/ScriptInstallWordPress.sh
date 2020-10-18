@@ -77,8 +77,10 @@ cd /opt/wordpress/ && wget http://wordpress.org/latest.tar.gz
 tar -xvzf latest.tar.gz
 # Copy wordpress
 rsync -a wordpress/* /var/www/html/wordpress
-#move wp-config
+# move wp-config
 mv wp-config.php /var/www/html/wordpress
+# copy 000-default.conf
+rsync -a 000-default.conf /etc/apache2/sites-enabled/
 # Give permission user to www-data
 chown -R www-data:www-data /var/www/html/wordpress
 #change access permissions
