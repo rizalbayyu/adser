@@ -72,7 +72,7 @@ echo "==========================================================================
 # Preparing Installation WordPress
 mkdir /var/www/html/wordpress
 wget http://wordpress.org/latest.tar.gz -P /opt/
-# extract Archieve to /opt/wordpress directory
+# extract Archieve from /opt/wordpress directory
 tar -xvzf /opt/latest.tar.gz
 # Move wordpress
 mv wordpress/* /var/www/html/wordpress
