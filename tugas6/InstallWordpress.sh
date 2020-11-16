@@ -72,20 +72,18 @@ tar -xvzf /opt/latest.tar.gz
 # Move wordpress to /var/www/html/wordpress
 mv wordpress/* /var/www/html/wordpress
 
+#Membuat SSL certificate
+sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/nginx-selfsigned.key -out /etc/ssl/certs/nginx-selfsigned.crt
+
 # rsync beberapa file konfigurasi yang telah disesuaikan
 rsync -a wp-config.php /var/www/html/wordpress
 rsync -a wordpress.conf /etc/nginx/sites-available
 rsync -a nginx.conf /etc/nginx/nginx.conf
-rsync -a nginx-selfsigned.crt /etc/ssl/certs/nginx-selfsigned.crt
-rsync -a nginx-selfsigned.key /etc/ssl/private/nginx-selfsigned.key
 cp dhparam.pem /etc/nginx/
 cp self-signed.conf /etc/nginx/snippets/
 cp ssl-params.conf /etc/nginx/snippets
 
 sudo ln -s /etc/nginx/sites-available/wordpress.conf /etc/nginx/sites-enabled/
-
-# Membuat SSL certificate
-# sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/nginx-selfsigned.key -out /etc/ssl/certs/nginx-selfsigned.crt
 
 #hapus file yang tidak dipakai
 rm /etc/nginx/sites-enabled/default
