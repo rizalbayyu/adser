@@ -10,11 +10,11 @@ if [ $EUID -ne 0 ]; then
     exit 1
 else
 
-sudo apt update -y && sudo apt install apt-transport-https ca-certificates curl software-properties-common
+sudo apt update && sudo apt install apt-transport-https ca-certificates curl software-properties-common
 
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add - && sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
 
-sudo apt update -y && sudo apt install -y docker-ce
+sudo apt update && sudo apt install docker-ce
 sudo systemctl enable docker
 
 sudo usermod -aG docker ${USER}
@@ -30,5 +30,6 @@ sudo curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-c
 sudo chmod +x /usr/local/bin/docker-compose
 docker-compose --version
 sudo systemctl restart docker
+docker network create -d bridge wordpress_network
 
 fi
