@@ -4,7 +4,7 @@ version: '3'
 volumes:
   wordpress:
     driver: local
-  db_data:
+  mysql:
     driver: local
 
 services:
